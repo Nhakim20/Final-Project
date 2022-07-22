@@ -32,11 +32,8 @@ const Header = () => {
         console.log(response.data.data)
       })
       .catch((err) => console.log(err));
-   if (search = null ) {
-    navigate("/search")
-   } else {  
+   
   navigate("/search")
-   }
     }
 
   return (
