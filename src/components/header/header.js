@@ -1,4 +1,4 @@
-import React, { useState,  useContext } from "react";
+import React, { useState,useEffect,  useContext } from "react";
 import {
   Navbar,
   Container,
@@ -23,26 +23,20 @@ const Header = () => {
   const search = useContext(DataContext)
   const { setDataSearch } = search
 
-  // const BASE_URL = 'http://localhost:8000'
-
-  // const findStuff = () => {
-  //   axios({
-  //     method: 'GET',
-  //     url: `${BASE_URL}/${search}`,
-  //   }).then((result) => {
-  //     setStuff(result.data.name)
-  //   })
-  // }
   const handleSearch = async (e) => {
     e.preventDefault();
-    await axios.get(`http://localhost:4000/api/products?q=${value}`)
+    await axios.get(`http://localhost:4000/api/products/search/${value}`)
       .then((response) => {
-        setDataSearch(response.data)
+        setDataSearch(response.data.data)
         setValue("")
-        console.log(response.data)
+        console.log(response.data.data)
       })
       .catch((err) => console.log(err));
+   if (search = null ) {
+    navigate("/search")
+   } else {  
   navigate("/search")
+   }
     }
 
   return (
